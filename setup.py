@@ -10,5 +10,6 @@ setup(
         "transformers==4.34.0",
         "tokenizers==0.14.1",
         "safetensors==0.4.0",
+        "numpy==1.24.4",
     ],
 )
