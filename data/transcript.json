@@ -2,87 +2,95 @@
 	"dialogue": [
 		{
 			"speaker": "representative",
-			"message": "Hello, welcome to our store! How can I assist you today?"
+			"message": "Hello! Thank you for choosing our store. How can I assist you today?"
 		},
 		{
 			"speaker": "client",
-			"message": "Hi there, I'm interested in buying an iPhone 14. Can you tell me more about it?"
+			"message": "I'm looking for an iPhone 14, and I've heard it should last around 25 hours on a single charge. Is that true?"
 		},
 		{
 			"speaker": "representative",
-			"message": "Of course! The iPhone 14 is our latest model. It comes with a host of new features and improvements. What specific features are you looking for?"
+			"message": "Yes, that's correct! The iPhone 14 is designed to offer up to 25 hours of battery life."
 		},
 		{
 			"speaker": "client",
-			"message": "I need a phone that can last a long time on a single charge, around 20 hours would be great. Does the iPhone 14 have good battery life?"
+			"message": "Great to hear. Can you tell me more about its camera features?"
 		},
 		{
 			"speaker": "representative",
-			"message": "The iPhone 14 offers exceptional battery life. With typical usage, it can last up to 20 hours on a single charge. It's one of the longest-lasting iPhones we've ever produced."
+			"message": "The iPhone 14 comes with a high-resolution camera system, featuring advanced image stabilization and improved low-light performance."
 		},
 		{
 			"speaker": "client",
-			"message": "That sounds perfect. What storage options are available for the iPhone 14?"
+			"message": "That sounds promising. What about the pricing? Is there any discount available?"
 		},
 		{
 			"speaker": "representative",
-			"message": "You can choose from 128GB, 256GB, and 512GB storage options. The choice depends on your storage needs and budget."
+			"message": "We do have some promotions going on. I can check if you're eligible for any discounts. Can I have your details?"
 		},
 		{
 			"speaker": "client",
-			"message": "I think I'd like the 256GB version. What about the camera quality? I'm into photography."
+			"message": "I'd rather not share my personal information right now. Can you at least tell me the base price?"
 		},
 		{
 			"speaker": "representative",
-			"message": "The iPhone 14 has a top-tier camera system. It features a 12MP main camera and a 12MP ultra-wide camera, both of which deliver exceptional photo and video quality. It's perfect for photography enthusiasts."
+			"message": "The base price for the iPhone 14 starts at $999."
 		},
 		{
 			"speaker": "client",
-			"message": "Great, that's exactly what I need. Do you have any promotions or discounts for the iPhone 14 right now?"
+			"message": "Hmm, that's a bit steep for me. Do you have any more affordable options?"
 		},
 		{
 			"speaker": "representative",
-			"message": "We do have some ongoing promotions. Let me check for you. Are you a student or do you have any specific affiliations that might qualify you for additional discounts?"
+			"message": "We also have the iPhone 14 Mini, which is a more budget-friendly option. It starts at $699."
 		},
 		{
 			"speaker": "client",
-			"message": "I'm not a student, but I have a corporate affiliation. Can I get a corporate discount?"
+			"message": "I see. Can you tell me about its storage capacity?"
 		},
 		{
 			"speaker": "representative",
-			"message": "Certainly, if you're eligible for a corporate discount, we can apply that to your purchase. I'll need to verify your affiliation. Do you have your corporate ID or any relevant documentation?"
+			"message": "The iPhone 14 Mini comes with different storage options, ranging from 64GB to 256GB."
 		},
 		{
 			"speaker": "client",
-			"message": "I have my corporate ID. Let me show it to you."
+			"message": "Thank you for the information. What accessories are available for the iPhone 14 Mini?"
 		},
 		{
 			"speaker": "representative",
-			"message": "Thank you. I'll process the corporate discount for you. Please provide your corporate ID, and I'll calculate the final price for the iPhone 14."
+			"message": "We have a range of accessories, including cases, screen protectors, and wireless chargers, specifically designed for the iPhone 14 Mini. Is there anything specific you're looking for?"
 		},
 		{
 			"speaker": "client",
-			"message": "Here's my corporate ID."
+			"message": "I'm interested in a protective case and a wireless charger. Can you provide me with some options and their prices?"
 		},
 		{
 			"speaker": "representative",
-			"message": "Thank you. It will just take a moment to verify this. While I'm doing that, is there anything else you'd like to know about the iPhone 14 or any accessories you'd like to add to your purchase?"
+			"message": "Of course, here are a few options:\n\n1. SlimFit Protective Case - $29.99\n2. ArmorShield Tough Case - $39.99\n3. Wireless Charging Pad - $29.99\n4. FastCharge Wireless Stand - $49.99\n\nWould you like more details about any of these?"
 		},
 		{
 			"speaker": "client",
-			"message": "I'm interested in a protective case and screen protector. What options do you have?"
+			"message": "I'm interested in the SlimFit Protective Case and the Wireless Charging Pad. Are there any discounts if I purchase them together with the iPhone 14 Mini?"
 		},
 		{
 			"speaker": "representative",
-			"message": "We have a range of high-quality cases and screen protectors that are designed specifically for the iPhone 14. They come in various styles and materials. Let me show you some options."
+			"message": "We currently have a bundle promotion. If you purchase the iPhone 14 Mini, SlimFit Protective Case, and Wireless Charging Pad together, you'll receive a 10% discount on the total price."
 		},
 		{
 			"speaker": "client",
-			"message": "I'd like to see some options, and I'll decide on the case and screen protector after that."
+			"message": "That sounds like a good deal. I'll go for the bundle. Please add those to my purchase."
 		},
 		{
 			"speaker": "representative",
-			"message": "Certainly, I'll show you the available options. Once we've selected the accessories, I'll have the final price for your iPhone 14 purchase, including the corporate discount."
+			"message": "Great choice! I've added the iPhone 14 Mini, SlimFit Protective Case, and Wireless Charging Pad to your purchase. Is there anything else I can assist you with?"
+		},
+		{
+			"speaker": "client",
+			"message": "That's all for now. Thank you for your help!"
+		},
+		{
+			"speaker": "representative",
+			"message": "You're welcome! If you have any more questions in the future, feel free to reach out. Have a wonderful day!"
 		}
 	]
 }
