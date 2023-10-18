@@ -43,6 +43,7 @@ def analyze(config_path: str, data_path: str, resources_dir: str):
     possible_sentiments = [sentiment for _, sentiment in config.items("possible_sentiments")]
     possible_intentions = [intention for _, intention in config.items("possible_intentions")]
 
+    logging.info(f"Extracting sentiments and intentions")
     results: List[Dict[str, Union[str, List[str]]]] = []
     for interaction in transcript:
         speaker = interaction["speaker"]
