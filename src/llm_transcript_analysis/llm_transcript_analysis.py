@@ -7,10 +7,7 @@ from typing import Dict, List, Tuple
 import numpy as np
 from transformers import BartForSequenceClassification, BartTokenizer, pipeline
 
-from transformers import BartForConditionalGeneration, BartTokenizer
-
-logging.basicConfig(format="%(asctime)s - %(levelname)s: %(message)s")
-logging.warning("This is a Warning")
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s: %(message)s", datefmt="%Y-%m-%d %H:%M:%S")
 
 
 def read_config(config_path: str):
@@ -20,11 +17,11 @@ def read_config(config_path: str):
     return config
 
 
-def read_data(data_path: str):
+def read_data(data_path: str) -> List[Dict[str, str]]:
     logging.info(f"Reading the transcript")
     with Path(data_path).open("r") as data_file:
         transcript = json.load(data_file)
-    return transcript
+    return transcript["dialogue"]
 
 
 def load_pipeline(config: ConfigParser, resources_dir: str):
