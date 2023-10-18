@@ -3,6 +3,9 @@ from configparser import ConfigParser
 from pathlib import Path
 import json
 import logging
+from typing import Dict, List, Tuple
+import numpy as np
+from transformers import BartForSequenceClassification, BartTokenizer, pipeline
 
 from transformers import BartForConditionalGeneration, BartTokenizer
 
@@ -24,22 +27,20 @@ def read_data(data_path: str):
     return transcript
 
 
-def load_model_and_tokenizer(config: ConfigParser, resources_dir: str):
+def load_pipeline(config: ConfigParser, resources_dir: str):
     if not Path(resources_dir).is_dir():
         logging.info(f"Creating {resources_dir} as the resource directory")
         Path(resources_dir).mkdir(parents=True, exist_ok=True)
 
-    logging.info(f"Loading the model and the tokenizer")
-    model = BartForConditionalGeneration.from_pretrained(
-        config["DEFAULT"]["model_name"], forced_bos_token_id=0, cache_dir=resources_dir
-    )
+    logging.info(f"Loading the model")
+    model = BartForSequenceClassification.from_pretrained(config["DEFAULT"]["model_name"], cache_dir=resources_dir)
     tokenizer = BartTokenizer.from_pretrained(config["DEFAULT"]["model_name"], cache_dir=resources_dir)
-    return model, tokenizer
+    return pipeline("zero-shot-classification", model=model, tokenizer=tokenizer)
 
 
 def analyze(config_path: str, data_path: str, resources_dir: str):
     config = read_config(config_path)
-    model, tokenizer = load_model_and_tokenizer(config, resources_dir)
+    pipe = load_pipeline(config, resources_dir)
     transcript = read_data(data_path)
 
 
