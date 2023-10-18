@@ -66,6 +66,7 @@ def analyze(config_path: str, data_path: str, resources_dir: str):
 
         interaction["sentiment"] = sentiment
         interaction["intentions"] = intentions
+        results.append(interaction)
 
     return results
 
