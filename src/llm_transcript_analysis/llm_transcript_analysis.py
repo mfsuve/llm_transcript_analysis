@@ -3,7 +3,7 @@ from configparser import ConfigParser
 from pathlib import Path
 import json
 import logging
-from typing import Dict, List, Tuple
+from typing import Dict, List, Tuple, Union
 import numpy as np
 from transformers import BartForSequenceClassification, BartTokenizer, pipeline
 
@@ -40,6 +40,60 @@ def analyze(config_path: str, data_path: str, resources_dir: str):
     pipe = load_pipeline(config, resources_dir)
     transcript = read_data(data_path)
 
+    possible_sentiments = ["neutral", "positive", "negative"]
+    possible_intentions = [
+        "a general dialogue",
+        "asking for the price",
+        "asking for a discount",
+        "asking about the features",
+        "asking about accessories",
+    ]
+
+    results: List[Dict[str, Union[str, List[str]]]] = []
+    for interaction in transcript:
+        speaker = interaction["speaker"]
+        message = interaction["message"]
+
+        if speaker != "client":
+            results.append(interaction)
+            continue
+
+        # Single sentiment per message
+        sentiment: str = pipe(message, candidate_labels=possible_sentiments)["labels"][0]
+        # Multiple intentions per message
+        intention_results = pipe(message, candidate_labels=possible_intentions, multi_label=True)
+        # Get the possible intentions with score greater than 95%
+        intentions: List[str] = [
+            label for label, score in zip(intention_results["labels"], intention_results["scores"]) if score > 0.95
+        ]
+        # If no intention was found, pick the most confident one
+        if len(intentions) == 0:
+            intentions = [intention_results["labels"][0]]
+
+        interaction["sentiment"] = sentiment
+        interaction["intentions"] = intentions
+
+    return results
+
+
+def print_results(results: List[Dict[str, Union[str, List[str]]]]):
+    print()
+    for interaction_result in results:
+        speaker: str = interaction_result["speaker"]
+        message: str = interaction_result["message"]
+        print(f" > {speaker.capitalize()}: {message}")
+
+        if speaker != "client":
+            print()
+            continue
+
+        sentiment: str = interaction_result["sentiment"]
+        intentions: List[str] = interaction_result["intentions"]
+
+        print(f"    * Sentiment: {sentiment.title()}")
+        print(f"    * Intentions: {', '.join(intention.title() for intention in intentions) }")
+        print()
+
 
 def main():
     parser = ArgumentParser(description="LLM Transcript Analysis")
@@ -47,7 +101,9 @@ def main():
     parser.add_argument("-d", "--datapath", required=True)
     parser.add_argument("-r", "--resourcesdir", required=True)
     args = parser.parse_args()
-    analyze(args.configpath, args.datapath, args.resourcesdir)
+
+    results = analyze(args.configpath, args.datapath, args.resourcesdir)
+    print_results(results)
 
 
 if __name__ == "__main__":
