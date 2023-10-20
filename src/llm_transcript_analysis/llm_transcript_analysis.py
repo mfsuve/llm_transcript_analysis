@@ -36,6 +36,13 @@ def load_pipeline(config: ConfigParser, resources_dir: str):
 
 
 def analyze(config_path: str, data_path: str, resources_dir: str):
+    """
+    Arguments
+    ---
+    config_path: The path for the .ini configuration file
+    data_path: The path for the .json data file
+    resources_dir: The path for the resources directory to download the model
+    """
     config = read_config(config_path)
     pipe = load_pipeline(config, resources_dir)
     transcript = read_data(data_path)
@@ -93,9 +100,9 @@ def print_results(results: List[Dict[str, Union[str, List[str]]]]):
 
 def main():
     parser = ArgumentParser(description="LLM Transcript Analysis")
-    parser.add_argument("-c", "--configpath", required=True)
-    parser.add_argument("-d", "--datapath", required=True)
-    parser.add_argument("-r", "--resourcesdir", required=True)
+    parser.add_argument("-c", "--configpath", required=True, help="The path for the .ini configuration file")
+    parser.add_argument("-d", "--datapath", required=True, help="The path for the .json data file")
+    parser.add_argument("-r", "--resourcesdir", required=True, help="The path for the resources directory to download the model")
     args = parser.parse_args()
 
     results = analyze(args.configpath, args.datapath, args.resourcesdir)
